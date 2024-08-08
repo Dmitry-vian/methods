@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Содержимое проекта methods &mdash; документация Документация методов API 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=e35015f7"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=9bfe3ffa"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="Приложение apps" href="apps/modules.html" />
+    <link rel="prev" title="Проект methods" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Документация методов API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Проект methods</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Содержимое проекта methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Подмодули</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#methods-asgi">Модуль methods.asgi</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#methods-settings">Модуль methods.settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#methods-urls">Модуль methods.urls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#methods-wsgi">Модуль methods.wsgi</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="apps/modules.html">Приложение apps</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Документация методов API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Проект methods</a></li>
+      <li class="breadcrumb-item active">Содержимое проекта methods</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/methods.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="methods">
+<h1>Содержимое проекта methods<a class="headerlink" href="#methods" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Подмодули<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+</section>
+<section id="methods-asgi">
+<h2>Модуль methods.asgi<a class="headerlink" href="#methods-asgi" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">,</span> <span class="s1">&#39;methods.settings&#39;</span><span class="p">)</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">ProtocolTypeRouter</span><span class="p">({</span>
+    <span class="s2">&quot;http&quot;</span><span class="p">:</span> <span class="n">get_asgi_application</span><span class="p">(),</span>
+    <span class="s2">&quot;websocket&quot;</span><span class="p">:</span> <span class="n">AuthMiddlewareStack</span><span class="p">(</span>
+        <span class="n">URLRouter</span><span class="p">(</span>
+            <span class="n">websocket_urlpatterns</span>
+        <span class="p">)</span>
+    <span class="p">),</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p id="module-methods.asgi"><strong>ASGI конфигурация для проекта methods</strong></p>
+<p>Этот модуль определяет точку входа для ASGI сервера, объединяя обработку HTTP-запросов и WebSocket-соединений.</p>
+<p><strong>Ключевые элементы:</strong></p>
+<ul class="simple">
+<li><p><strong>`get_asgi_application()`:</strong> Получает объект ASGI приложения Django для обработки HTTP-запросов.</p></li>
+<li><p><strong>`ProtocolTypeRouter`:</strong> Маршрутизатор, который определяет, какой обработчик использовать в зависимости от протокола (HTTP или WebSocket).</p></li>
+<li><p><strong>`AuthMiddlewareStack`:</strong> Обеспечивает аутентификацию пользователей для WebSocket-соединений.</p></li>
+<li><p><strong>`URLRouter`:</strong> Маршрутизатор для WebSocket-сообщений, использующий <cite>websocket_urlpatterns</cite> из приложения <cite>apps</cite>.</p></li>
+</ul>
+<p><strong>Логика работы:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Загрузка настроек Django:</strong> Устанавливается переменная окружения <cite>DJANGO_SETTINGS_MODULE</cite> для загрузки настроек проекта.</p></li>
+<li><p><strong>Создание маршрутизатора:</strong> Создается объект <cite>ProtocolTypeRouter</cite>, который направляет запросы либо на HTTP-обработчик Django, либо на WebSocket-маршрутизатор.</p></li>
+<li><p><strong>Обработка WebSocket-сообщений:</strong> Для WebSocket-сообщений используется <cite>AuthMiddlewareStack</cite> для аутентификации и <cite>URLRouter</cite> для маршрутизации к соответствующим обработчикам, определенным в <cite>websocket_urlpatterns</cite>.</p></li>
+</ol>
+<p><strong>Использование:</strong></p>
+<p>Этот модуль должен быть указан как точка входа для ASGI сервера (например, в файле <cite>wsgi.py</cite>).</p>
+</section>
+<section id="methods-settings">
+<h2>Модуль methods.settings<a class="headerlink" href="#methods-settings" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+<span class="s1">&#39;django.contrib.admin&#39;</span><span class="p">,</span>
+<span class="s1">&#39;django.contrib.auth&#39;</span><span class="p">,</span>
+<span class="s1">&#39;django.contrib.contenttypes&#39;</span><span class="p">,</span>
+<span class="s1">&#39;django.contrib.sessions&#39;</span><span class="p">,</span>
+<span class="s1">&#39;django.contrib.messages&#39;</span><span class="p">,</span>
+<span class="s1">&#39;django.contrib.staticfiles&#39;</span><span class="p">,</span>
+
+<span class="s1">&#39;apps&#39;</span><span class="p">,</span>
+<span class="s1">&#39;django_extensions&#39;</span><span class="p">,</span>
+<span class="s1">&#39;rest_framework&#39;</span><span class="p">,</span>
+<span class="s1">&#39;markdown&#39;</span><span class="p">,</span>
+<span class="s1">&#39;channels&#39;</span><span class="p">,</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p id="module-methods.settings">Django settings for methods project.</p>
+<p>Generated by „django-admin startproject“ using Django 5.0.7.</p>
+<p>For more information on this file, see
+<a class="reference external" href="https://docs.djangoproject.com/en/5.0/topics/settings/">https://docs.djangoproject.com/en/5.0/topics/settings/</a></p>
+<p>For the full list of settings and their values, see
+<a class="reference external" href="https://docs.djangoproject.com/en/5.0/ref/settings/">https://docs.djangoproject.com/en/5.0/ref/settings/</a></p>
+</section>
+<section id="methods-urls">
+<h2>Модуль methods.urls<a class="headerlink" href="#methods-urls" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">path</span><span class="p">(</span><span class="s1">&#39;apps/&#39;</span><span class="p">,</span> <span class="n">include</span><span class="p">(</span><span class="s1">&#39;apps.urls&#39;</span><span class="p">)),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p id="module-methods.urls">Модуль URL-конфигураций проекта.</p>
+<p>Этот модуль определяет базовые URL-паттерны для веб-приложения.</p>
+</section>
+<section id="methods-wsgi">
+<h2>Модуль methods.wsgi<a class="headerlink" href="#methods-wsgi" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;DJANGO_SETTINGS_MODULE&#39;</span><span class="p">,</span> <span class="s1">&#39;methods.settings&#39;</span><span class="p">)</span>
+
+<span class="n">application</span> <span class="o">=</span> <span class="n">get_wsgi_application</span><span class="p">()</span>
+</pre></div>
+</div>
+<p id="module-methods.wsgi">WSGI конфиг для проекта methods.</p>
+<p>Он предоставляет вызываемую функцию WSGI в качестве переменной уровня модуля с именем <code class="docutils literal notranslate"><span class="pre">application</span></code>.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Проект methods" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="apps/modules.html" class="btn btn-neutral float-right" title="Приложение apps" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, Михалкин Дмитрий. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
