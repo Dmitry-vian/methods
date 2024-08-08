@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>apps.views &mdash; документация Документация методов API 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/translations.js?v=9bfe3ffa"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Документация методов API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../modules.html">Проект methods</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps/modules.html">Приложение apps</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Документация методов API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Код модуля</a></li>
+      <li class="breadcrumb-item active">apps.views</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Исходный код apps.views</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">viewsets</span>
+<span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">IsAuthenticated</span>
+<span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+<span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">action</span><span class="p">,</span> <span class="n">permission_classes</span><span class="p">,</span> <span class="n">api_view</span>
+<span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">status</span>
+<span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">CommandsResult</span><span class="p">,</span> <span class="n">Employee</span>
+<span class="kn">from</span> <span class="nn">.serializers</span> <span class="kn">import</span> <span class="n">CommandsResultSerializer</span><span class="p">,</span> <span class="n">EmployeeSerializer</span>
+<span class="kn">import</span> <span class="nn">subprocess</span>
+<span class="kn">import</span> <span class="nn">platform</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+
+<div class="viewcode-block" id="execute_command">
+<a class="viewcode-back" href="../../apps/apps.html#apps.views.execute_command">[документация]</a>
+<span class="k">def</span> <span class="nf">execute_command</span><span class="p">(</span><span class="n">command</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Выполняет системную команду в терминале и возвращает ее вывод.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        command (str): Команда для выполнения.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: Вывод команды в стандартный поток вывода или сообщение об ошибке.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        subprocess.CalledProcessError: Если при выполнении команды возникла ошибка.</span>
+
+<span class="sd">    **Примечания:**</span>
+<span class="sd">    * Использует `subprocess.run` для надежного и безопасного выполнения команд.</span>
+<span class="sd">    * Автоматически определяет кодировку вывода в зависимости от операционной системы.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># Используем subprocess.run для более удобного интерфейса</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">command</span><span class="p">,</span> <span class="n">shell</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">capture_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">check</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;cp866&#39;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="n">stdout</span>
+    <span class="k">except</span> <span class="n">subprocess</span><span class="o">.</span><span class="n">CalledProcessError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Ошибка выполнения команды: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span></div>
+
+
+
+<div class="viewcode-block" id="get_employee_count">
+<a class="viewcode-back" href="../../apps/apps.html#apps.views.get_employee_count">[документация]</a>
+<span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@permission_classes</span><span class="p">([</span><span class="n">IsAuthenticated</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">get_employee_count</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">viewsets</span>
+    <span class="kn">from</span> <span class="nn">rest_framework.permissions</span> <span class="kn">import</span> <span class="n">IsAuthenticated</span>
+    <span class="kn">from</span> <span class="nn">rest_framework.response</span> <span class="kn">import</span> <span class="n">Response</span>
+    <span class="kn">from</span> <span class="nn">rest_framework.decorators</span> <span class="kn">import</span> <span class="n">api_view</span>
+    <span class="kn">from</span> <span class="nn">rest_framework</span> <span class="kn">import</span> <span class="n">status</span>
+    <span class="kn">from</span> <span class="nn">.models</span> <span class="kn">import</span> <span class="n">Employee</span>
+    <span class="kn">from</span> <span class="nn">.serializers</span> <span class="kn">import</span> <span class="n">EmployeeSerializer</span>
+
+    <span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+    <span class="nd">@permission_classes</span><span class="p">([</span><span class="n">IsAuthenticated</span><span class="p">])</span>
+    <span class="k">def</span> <span class="nf">get_employee_count</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Получает общее количество сотрудников в системе.</span>
+
+<span class="sd">    **Требуется авторизация.**</span>
+
+<span class="sd">    **Ответ:**</span>
+<span class="sd">    * `count` (int): Общее количество сотрудников.</span>
+
+<span class="sd">    **Пример ответа:**</span>
+<span class="sd">    ```json</span>
+<span class="sd">    {</span>
+<span class="sd">    &quot;count&quot;: 10</span>
+<span class="sd">    }</span>
+<span class="sd">    ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">Employee</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;count&#39;</span><span class="p">:</span> <span class="n">count</span><span class="p">})</span></div>
+
+
+
+<div class="viewcode-block" id="get_employee_by_id">
+<a class="viewcode-back" href="../../apps/apps.html#apps.views.get_employee_by_id">[документация]</a>
+<span class="nd">@api_view</span><span class="p">([</span><span class="s1">&#39;GET&#39;</span><span class="p">])</span>
+<span class="nd">@permission_classes</span><span class="p">([</span><span class="n">IsAuthenticated</span><span class="p">])</span>
+<span class="k">def</span> <span class="nf">get_employee_by_id</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">employee_id</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Получает информацию о конкретном сотруднике по его идентификатору.</span>
+
+<span class="sd">    **Требуется авторизация.**</span>
+
+<span class="sd">    **Параметры:**</span>
+<span class="sd">    * `employee_id` (int): Уникальный идентификатор сотрудника.</span>
+
+<span class="sd">    **Ответ:**</span>
+<span class="sd">    * Сериализованные данные сотрудника, содержащие его поля (например, `id`, `first_name`, `email`).</span>
+
+<span class="sd">    **Ошибки:**</span>
+<span class="sd">    * `404 Not Found`: Если сотрудник с указанным идентификатором не найден.</span>
+
+<span class="sd">    **Пример ответа (успешный):**</span>
+<span class="sd">    ```json</span>
+<span class="sd">    {</span>
+<span class="sd">    &quot;id&quot;: 1,</span>
+<span class="sd">    &quot;first_name&quot;: &quot;Иван&quot;,</span>
+<span class="sd">    &quot;email&quot;: &quot;[удаленный электронный адрес]&quot;</span>
+<span class="sd">    }</span>
+<span class="sd">    ```</span>
+<span class="sd">    **Пример ответа (ошибка):**</span>
+<span class="sd">    ```json</span>
+<span class="sd">    {</span>
+<span class="sd">    &quot;error&quot;: &quot;Employee not found&quot;</span>
+<span class="sd">    }</span>
+<span class="sd">    ```</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">employee</span> <span class="o">=</span> <span class="n">Employee</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="n">employee_id</span><span class="p">)</span>
+        <span class="n">serializer</span> <span class="o">=</span> <span class="n">EmployeeSerializer</span><span class="p">(</span><span class="n">employee</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="k">except</span> <span class="n">Employee</span><span class="o">.</span><span class="n">DoesNotExist</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Employee not found&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="mi">404</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="SystemCommands">
+<a class="viewcode-back" href="../../apps/apps.html#apps.views.SystemCommands">[документация]</a>
+<span class="k">class</span> <span class="nc">SystemCommands</span><span class="p">(</span><span class="n">viewsets</span><span class="o">.</span><span class="n">ViewSet</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ViewSet для выполнения системных команд и сохранения результатов.</span>
+
+<span class="sd">    Позволяет выполнять различные системные команды через API и сохранять их результаты в базе данных.</span>
+<span class="sd">    Поддерживаемые команды:</span>
+<span class="sd">    * `ifconfig` (или `ipconfig` на Windows): Получение информации о сетевых интерфейсах.</span>
+<span class="sd">    * `touchfile`: Создание нового файла.</span>
+
+<span class="sd">    **Методы:**</span>
+<span class="sd">    * `command_ifconfig`: Выполняет команду `ifconfig` или `ipconfig`.</span>
+<span class="sd">    * `command_touchfile`: Создает новый файл.</span>
+
+<span class="sd">    **Результаты:**</span>
+<span class="sd">    * Результаты выполнения команд сохраняются в базе данных в модели `CommandsResult`.</span>
+<span class="sd">    * При успешном выполнении возвращается HTTP-код 201 (Создано) и сериализованные данные результата.</span>
+<span class="sd">    * При ошибках возвращается соответствующий HTTP-код и сообщение об ошибке.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">queryset</span> <span class="o">=</span> <span class="n">CommandsResult</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+    <span class="n">serializer_class</span> <span class="o">=</span> <span class="n">CommandsResultSerializer</span>
+
+<div class="viewcode-block" id="SystemCommands.command_ifconfig">
+<a class="viewcode-back" href="../../apps/apps.html#apps.views.SystemCommands.command_ifconfig">[документация]</a>
+    <span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="n">url_path</span><span class="o">=</span><span class="s1">&#39;ifconfig&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">command_ifconfig</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">command</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;command&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">command</span> <span class="o">!=</span> <span class="s1">&#39;ifconfig&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Неверная команда&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
+
+        <span class="c1"># Определяем команду в зависимости от ОС</span>
+        <span class="n">system_command</span> <span class="o">=</span> <span class="s1">&#39;ipconfig&#39;</span> <span class="k">if</span> <span class="n">platform</span><span class="o">.</span><span class="n">system</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;Windows&#39;</span> <span class="k">else</span> <span class="s1">&#39;ifconfig&#39;</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">execute_command</span><span class="p">(</span><span class="n">system_command</span><span class="p">)</span>
+        <span class="n">ifconfig_instance</span> <span class="o">=</span> <span class="n">CommandsResult</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">command</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="n">output</span><span class="p">)</span>
+        <span class="n">serializer</span> <span class="o">=</span> <span class="n">CommandsResultSerializer</span><span class="p">(</span><span class="n">ifconfig_instance</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="SystemCommands.command_touchfile">
+<a class="viewcode-back" href="../../apps/apps.html#apps.views.SystemCommands.command_touchfile">[документация]</a>
+    <span class="nd">@action</span><span class="p">(</span><span class="n">detail</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;post&#39;</span><span class="p">],</span> <span class="n">url_path</span><span class="o">=</span><span class="s1">&#39;touchfile&#39;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">command_touchfile</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">):</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;filename&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">filename</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Имя файла не указано&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">filename</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="s1">&#39;Файл уже существует&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="k">pass</span>  <span class="c1"># Файл будет создан при открытии</span>
+            <span class="n">touchfile_instance</span> <span class="o">=</span> <span class="n">CommandsResult</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;touchfile&#39;</span><span class="p">,</span> <span class="n">output</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Файл </span><span class="si">{</span><span class="n">filename</span><span class="si">}</span><span class="s2"> создан&quot;</span><span class="p">)</span>
+            <span class="n">serializer</span> <span class="o">=</span> <span class="n">CommandsResultSerializer</span><span class="p">(</span><span class="n">touchfile_instance</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">(</span><span class="n">serializer</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_201_CREATED</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">Response</span><span class="p">({</span><span class="s1">&#39;error&#39;</span><span class="p">:</span> <span class="sa">f</span><span class="s1">&#39;Ошибка создания файла: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">},</span> <span class="n">status</span><span class="o">=</span><span class="n">status</span><span class="o">.</span><span class="n">HTTP_400_BAD_REQUEST</span><span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, Михалкин Дмитрий. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

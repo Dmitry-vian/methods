@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Содержимое приложения apps &mdash; документация Документация методов API 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=e35015f7"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=9bfe3ffa"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
+    <link rel="next" title="Миграции приложения apps apps.migrations" href="apps.migrations.html" />
+    <link rel="prev" title="Приложение apps" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Документация методов API
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../modules.html">Проект methods</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Приложение apps</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Содержимое приложения apps</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Подпакеты</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apps.migrations.html">Миграции приложения apps apps.migrations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Подмодули</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-apps.apps">Модуль apps.apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps.apps.AppsConfig"><code class="docutils literal notranslate"><span class="pre">AppsConfig</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-apps.consumers">Модуль apps.consumers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps.consumers.EmployeeConsumer"><code class="docutils literal notranslate"><span class="pre">EmployeeConsumer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-apps.models">Модуль apps.models</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps.models.CommandsResult"><code class="docutils literal notranslate"><span class="pre">CommandsResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apps.models.Employee"><code class="docutils literal notranslate"><span class="pre">Employee</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apps-routing">Модуль apps.routing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps.routing.websocket_urlpatterns"><code class="docutils literal notranslate"><span class="pre">websocket_urlpatterns</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-apps.serializers">Модуль apps.serializers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps.serializers.CommandsResultSerializer"><code class="docutils literal notranslate"><span class="pre">CommandsResultSerializer</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apps.serializers.EmployeeSerializer"><code class="docutils literal notranslate"><span class="pre">EmployeeSerializer</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-apps.signals">Модуль apps.signals</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps.signals.listen_to_db"><code class="docutils literal notranslate"><span class="pre">listen_to_db()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apps-urls">Модуль apps.urls</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps.urls.urlpatterns"><code class="docutils literal notranslate"><span class="pre">urlpatterns</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-apps.views">Модуль apps.views</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps.views.SystemCommands"><code class="docutils literal notranslate"><span class="pre">SystemCommands</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apps.views.execute_command"><code class="docutils literal notranslate"><span class="pre">execute_command()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apps.views.get_employee_by_id"><code class="docutils literal notranslate"><span class="pre">get_employee_by_id()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#apps.views.get_employee_count"><code class="docutils literal notranslate"><span class="pre">get_employee_count()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#apps-websocket-client">Модуль apps.websocket_client</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Документация методов API</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Приложение apps</a></li>
+      <li class="breadcrumb-item active">Содержимое приложения apps</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/apps/apps.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apps">
+<h1>Содержимое приложения apps<a class="headerlink" href="#apps" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Подпакеты<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apps.migrations.html">Миграции приложения apps apps.migrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apps.migrations.html#id1">Подмодули</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps.migrations.html#module-apps.migrations.0001_initial">Модуль apps.migrations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="apps.migrations.html#apps.migrations.0001_initial.Migration"><code class="docutils literal notranslate"><span class="pre">Migration</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="apps.migrations.html#apps.migrations.0001_initial.Migration.dependencies"><code class="docutils literal notranslate"><span class="pre">Migration.dependencies</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apps.migrations.html#apps.migrations.0001_initial.Migration.initial"><code class="docutils literal notranslate"><span class="pre">Migration.initial</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="apps.migrations.html#apps.migrations.0001_initial.Migration.operations"><code class="docutils literal notranslate"><span class="pre">Migration.operations</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="id2">
+<h2>Подмодули<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+</section>
+<section id="module-apps.apps">
+<span id="apps-apps"></span><h2>Модуль apps.apps<a class="headerlink" href="#module-apps.apps" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.apps.AppsConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.apps.</span></span><span class="sig-name descname"><span class="pre">AppsConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">app_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">app_module</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/apps.html#AppsConfig"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.apps.AppsConfig" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">AppConfig</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.apps.AppsConfig.default_auto_field">
+<span class="sig-name descname"><span class="pre">default_auto_field</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'django.db.models.BigAutoField'</span></em><a class="headerlink" href="#apps.apps.AppsConfig.default_auto_field" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.apps.AppsConfig.ready">
+<span class="sig-name descname"><span class="pre">ready</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/apps.html#AppsConfig.ready"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.apps.AppsConfig.ready" title="Link to this definition"></a></dt>
+<dd><p>Запускает фоновый поток для прослушивания изменений в базе данных.</p>
+<p>Этот метод вызывается при загрузке приложения. Он создает и запускает
+фоновый поток, который будет постоянно отслеживать изменения в базе данных
+с помощью функции listen_to_db.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.consumers">
+<span id="apps-consumers"></span><h2>Модуль apps.consumers<a class="headerlink" href="#module-apps.consumers" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.consumers.EmployeeConsumer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.consumers.</span></span><span class="sig-name descname"><span class="pre">EmployeeConsumer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/consumers.html#EmployeeConsumer"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.consumers.EmployeeConsumer" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">AsyncWebsocketConsumer</span></code></p>
+<p>Вебсокет-консьюмер для обработки запросов и уведомлений о сотрудниках.</p>
+<p>Этот консьюмер обрабатывает соединения с веб-клиентами,
+заинтересованными в данных о сотрудниках. Он может получать JSON-сообщения,
+содержащие идентификаторы записей, извлекать данные о сотрудниках из
+базы данных PostgreSQL и отправлять ответы обратно клиенту.
+Кроме того, он может слушать уведомления базы данных и транслировать их
+подключенным клиентам.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.consumers.EmployeeConsumer.async_send_message">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">async_send_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">event</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/consumers.html#EmployeeConsumer.async_send_message"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.consumers.EmployeeConsumer.async_send_message" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.consumers.EmployeeConsumer.connect">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">connect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/consumers.html#EmployeeConsumer.connect"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.consumers.EmployeeConsumer.connect" title="Link to this definition"></a></dt>
+<dd><p>Подключается к вебсокету и пулу соединений с базой данных.</p>
+<p>Этот метод пытается установить вебсокет-соединение и создать пул
+соединений с базой данных PostgreSQL.
+В случае успеха он добавляет консьюмер в канал «employees»
+и запускает задачу для прослушивания уведомлений базы данных.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.consumers.EmployeeConsumer.disconnect">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">close_code</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/consumers.html#EmployeeConsumer.disconnect"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.consumers.EmployeeConsumer.disconnect" title="Link to this definition"></a></dt>
+<dd><p>Отключается от вебсокета и закрывает пул соединений с базой данных.</p>
+<p>Этот метод удаляет консьюмер из канала «employees»,
+закрывает пул соединений с базой данных и
+записывает информацию об отключении.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.consumers.EmployeeConsumer.handle_notification">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle_notification</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">connection</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">channel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">payload</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/consumers.html#EmployeeConsumer.handle_notification"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.consumers.EmployeeConsumer.handle_notification" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.consumers.EmployeeConsumer.listen_for_notifications">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">listen_for_notifications</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/consumers.html#EmployeeConsumer.listen_for_notifications"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.consumers.EmployeeConsumer.listen_for_notifications" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.consumers.EmployeeConsumer.receive">
+<em class="property"><span class="pre">async</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">receive</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/consumers.html#EmployeeConsumer.receive"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.consumers.EmployeeConsumer.receive" title="Link to this definition"></a></dt>
+<dd><p>Обрабатывает входящие JSON-сообщения, содержащие идентификаторы записей сотрудников.</p>
+<p>Этот метод получает JSON-строку от клиента, анализирует ее и
+извлекает поле «record_id». Если идентификатор отсутствует,
+отправляется сообщение об ошибке.
+В противном случае он извлекает данные о сотруднике из базы данных
+и отправляет ответ клиенту. Он обрабатывает потенциальные ошибки
+во время разбора JSON, операций с базой данных и других исключений.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.models">
+<span id="apps-models"></span><h2>Модуль apps.models<a class="headerlink" href="#module-apps.models" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.models.CommandsResult">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.models.</span></span><span class="sig-name descname"><span class="pre">CommandsResult</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/models.html#CommandsResult"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.models.CommandsResult" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Модель для хранения информации о результатах выполнения команды ifconfig.</p>
+<dl class="simple">
+<dt>Атрибуты:</dt><dd><p>command (CharField): Название команды.
+name (CharField): Имя сетевого интерфейса или созданного файла.
+output (TextField): Текстовый вывод команды.</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.models.CommandsResult.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.models.CommandsResult.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.models.CommandsResult.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.models.CommandsResult.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.models.Employee">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.models.</span></span><span class="sig-name descname"><span class="pre">Employee</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/models.html#Employee"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.models.Employee" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Model</span></code></p>
+<p>Модель для представления сотрудника.</p>
+<p>Каждый объект этой модели соответствует одному сотруднику.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>id (AutoField): Уникальный идентификатор сотрудника (автоинкрементное поле).
+first_name (CharField): Имя сотрудника.
+email (EmailField): Электронная почта сотрудника.</p>
+</dd>
+</dl>
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.models.Employee.DoesNotExist">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DoesNotExist</span></span><a class="headerlink" href="#apps.models.Employee.DoesNotExist" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ObjectDoesNotExist</span></code></p>
+</dd></dl>
+
+<dl class="py exception">
+<dt class="sig sig-object py" id="apps.models.Employee.MultipleObjectsReturned">
+<em class="property"><span class="pre">exception</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MultipleObjectsReturned</span></span><a class="headerlink" href="#apps.models.Employee.MultipleObjectsReturned" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">MultipleObjectsReturned</span></code></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.models.Employee.email">
+<span class="sig-name descname"><span class="pre">email</span></span><a class="headerlink" href="#apps.models.Employee.email" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.models.Employee.first_name">
+<span class="sig-name descname"><span class="pre">first_name</span></span><a class="headerlink" href="#apps.models.Employee.first_name" title="Link to this definition"></a></dt>
+<dd><p>A wrapper for a deferred-loading field. When the value is read from this
+object the first time, the query is executed.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="apps-routing">
+<h2>Модуль apps.routing<a class="headerlink" href="#apps-routing" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.urls</span> <span class="kn">import</span> <span class="n">re_path</span>
+<span class="kn">from</span> <span class="nn">apps.consumers</span> <span class="kn">import</span> <span class="n">EmployeeConsumer</span>
+
+
+<span class="n">websocket_urlpatterns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">re_path</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;^ws/employees/$&#39;</span><span class="p">,</span> <span class="n">EmployeeConsumer</span><span class="o">.</span><span class="n">as_asgi</span><span class="p">()),</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<dl class="py data" id="module-apps.routing">
+<dt class="sig sig-object py" id="apps.routing.websocket_urlpatterns">
+<span class="sig-prename descclassname"><span class="pre">apps.routing.</span></span><span class="sig-name descname"><span class="pre">websocket_urlpatterns</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;URLPattern</span> <span class="pre">'^ws/employees/$'&gt;]</span></em><a class="headerlink" href="#apps.routing.websocket_urlpatterns" title="Link to this definition"></a></dt>
+<dd><p>Список URL-паттернов для WebSocket-соединений.</p>
+<p>Этот список определяет маршруты для WebSocket-соединений в вашем Django-приложении.
+Каждый элемент списка представляет собой кортеж, состоящий из регулярного выражения для
+сопоставления URL и соответствующего обработчика.</p>
+<p>В данном случае, мы определяем один маршрут:</p>
+<ul class="simple">
+<li><p><strong>„^ws/employees/$“</strong>: Регулярное выражение, которое соответствует URL-пути „/ws/employees/“. 
+Все запросы, соответствующие этому шаблону, будут направлены на обработчик 
+<cite>EmployeeConsumer.as_asgi()</cite>.</p></li>
+<li><p><strong>EmployeeConsumer.as_asgi()</strong>: Это асинхронный обработчик WebSocket-соединений,
+определенный в модуле <cite>apps.consumers</cite>. Он будет обрабатывать входящие WebSocket-сообщения 
+и отправлять ответы клиентам.</p></li>
+</ul>
+<p><strong>Использование:</strong>
+Когда клиент подключается к WebSocket-серверу по адресу „/ws/employees/“, 
+Django будет использовать класс <cite>EmployeeConsumer</cite> для обработки этого соединения.</p>
+</dd></dl>
+
+</section>
+<section id="module-apps.serializers">
+<span id="apps-serializers"></span><h2>Модуль apps.serializers<a class="headerlink" href="#module-apps.serializers" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.serializers.CommandsResultSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.serializers.</span></span><span class="sig-name descname"><span class="pre">CommandsResultSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/serializers.html#CommandsResultSerializer"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.serializers.CommandsResultSerializer" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Сериализатор для модели CommandsResult, представляющей результаты выполнения команд.</p>
+<p>Преобразует объекты модели CommandsResult в формат JSON, подходящий для передачи через API.
+Используется для представления результатов выполнения системных команд, таких как ifconfig или ipconfig.</p>
+<p>Fields:
+- command (str): Название выполненной команды.
+- name (str): Имя сетевого интерфейса или файла, связанного с командой.
+- output (str): Текстовый вывод команды.</p>
+<p>Пример сериализованных данных:
+<code class="docutils literal notranslate"><span class="pre">`json</span>
+<span class="pre">{</span>
+<span class="pre">&quot;command&quot;:</span> <span class="pre">&quot;ifconfig&quot;,</span>
+<span class="pre">&quot;name&quot;:</span> <span class="pre">&quot;eth0&quot;,</span>
+<span class="pre">&quot;output&quot;:</span> <span class="pre">&quot;eth0:</span> <span class="pre">flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;</span>&#160; <span class="pre">mtu</span> <span class="pre">1500&quot;</span>
+<span class="pre">}</span>
+<span class="pre">`</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.serializers.CommandsResultSerializer.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/apps/serializers.html#CommandsResultSerializer.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.serializers.CommandsResultSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.serializers.CommandsResultSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['command',</span> <span class="pre">'name',</span> <span class="pre">'output']</span></em><a class="headerlink" href="#apps.serializers.CommandsResultSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.serializers.CommandsResultSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#apps.serializers.CommandsResultSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>псевдоним для <a class="reference internal" href="#apps.models.CommandsResult" title="apps.models.CommandsResult"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandsResult</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.serializers.EmployeeSerializer">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.serializers.</span></span><span class="sig-name descname"><span class="pre">EmployeeSerializer</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/serializers.html#EmployeeSerializer"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.serializers.EmployeeSerializer" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ModelSerializer</span></code></p>
+<p>Сериализатор для модели Employee, представляющей информацию о сотруднике.</p>
+<p>Преобразует объекты модели Employee в формат JSON, подходящий для передачи через API.
+Используется для представления данных о сотрудниках в системе.</p>
+<p>Fields:
+- id (int): Уникальный идентификатор сотрудника.
+- first_name (str): Имя сотрудника.
+- email (str): Адрес электронной почты сотрудника.</p>
+<p>Пример сериализованных данных:
+<code class="docutils literal notranslate"><span class="pre">`json</span>
+<span class="pre">{&quot;id&quot;:</span> <span class="pre">1,</span>
+<span class="pre">&quot;first_name&quot;:</span> <span class="pre">&quot;Иван&quot;,</span>
+<span class="pre">&quot;email&quot;:</span> <span class="pre">&quot;[удаленный</span> <span class="pre">электронный</span> <span class="pre">адрес]&quot;}</span>
+<span class="pre">`</span></code></p>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.serializers.EmployeeSerializer.Meta">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Meta</span></span><a class="reference internal" href="../_modules/apps/serializers.html#EmployeeSerializer.Meta"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.serializers.EmployeeSerializer.Meta" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.serializers.EmployeeSerializer.Meta.fields">
+<span class="sig-name descname"><span class="pre">fields</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['id',</span> <span class="pre">'first_name',</span> <span class="pre">'email']</span></em><a class="headerlink" href="#apps.serializers.EmployeeSerializer.Meta.fields" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.serializers.EmployeeSerializer.Meta.model">
+<span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#apps.serializers.EmployeeSerializer.Meta.model" title="Link to this definition"></a></dt>
+<dd><p>псевдоним для <a class="reference internal" href="#apps.models.Employee" title="apps.models.Employee"><code class="xref py py-class docutils literal notranslate"><span class="pre">Employee</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-apps.signals">
+<span id="apps-signals"></span><h2>Модуль apps.signals<a class="headerlink" href="#module-apps.signals" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.signals.listen_to_db">
+<span class="sig-prename descclassname"><span class="pre">apps.signals.</span></span><span class="sig-name descname"><span class="pre">listen_to_db</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/signals.html#listen_to_db"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.signals.listen_to_db" title="Link to this definition"></a></dt>
+<dd><p>Слушает уведомления о новых сотрудниках в базе данных PostgreSQL
+и транслирует их клиентам через WebSocket.</p>
+<p>Эта функция устанавливает соединение с базой данных PostgreSQL,
+подписывается на канал «new_employee» для получения уведомлений о новых записях,
+и затем входит в бесконечный цикл, ожидая уведомлений.</p>
+<ul class="simple">
+<li><p>При получении уведомления, функция:</p></li>
+<li><p>Декодирует полезную нагрузку уведомления из JSON</p></li>
+<li><p>Записывает информацию о новом сотруднике в лог</p></li>
+<li><p>Асинхронно отправляет сообщение всем клиентам, подключенным к группе «employees» через WebSocket-канал.</p></li>
+</ul>
+<p>Функция обрабатывает исключения и закрывает соединение с базой данных
+по завершении работы.</p>
+<p><strong>Ошибки:</strong>
+- <strong>RuntimeError</strong>: Ошибки конфигурации канала, если он не настроен.</p>
+</dd></dl>
+
+</section>
+<section id="apps-urls">
+<h2>Модуль apps.urls<a class="headerlink" href="#apps-urls" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">router</span> <span class="o">=</span> <span class="n">DefaultRouter</span><span class="p">()</span>
+<span class="n">app_name</span> <span class="o">=</span> <span class="s1">&#39;apps&#39;</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;systemcommands&#39;</span><span class="p">,</span> <span class="n">SystemCommands</span><span class="p">,</span> <span class="n">basename</span><span class="o">=</span><span class="s1">&#39;ifconfig-apps&#39;</span><span class="p">)</span>
+<span class="n">router</span><span class="o">.</span><span class="n">register</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;systemcommands&#39;</span><span class="p">,</span> <span class="n">SystemCommands</span><span class="p">,</span> <span class="n">basename</span><span class="o">=</span><span class="s1">&#39;touchfile-apps&#39;</span><span class="p">)</span>
+<span class="n">urlpatterns</span> <span class="o">=</span> <span class="n">router</span><span class="o">.</span><span class="n">urls</span>
+</pre></div>
+</div>
+<dl class="py data" id="module-apps.urls">
+<dt class="sig sig-object py" id="apps.urls.urlpatterns">
+<span class="sig-prename descclassname"><span class="pre">apps.urls.</span></span><span class="sig-name descname"><span class="pre">urlpatterns</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[&lt;URLPattern</span> <span class="pre">'^systemcommands/ifconfig/$'</span> <span class="pre">[name='systemcommands-command-ifconfig']&gt;,</span> <span class="pre">&lt;URLPattern</span> <span class="pre">'^systemcommands/ifconfig\.(?P&lt;format&gt;[a-z0-9]+)/?$'</span> <span class="pre">[name='systemcommands-command-ifconfig']&gt;,</span> <span class="pre">&lt;URLPattern</span> <span class="pre">'^systemcommands/touchfile/$'</span> <span class="pre">[name='systemcommands-command-touchfile']&gt;,</span> <span class="pre">&lt;URLPattern</span> <span class="pre">'^systemcommands/touchfile\.(?P&lt;format&gt;[a-z0-9]+)/?$'</span> <span class="pre">[name='systemcommands-command-touchfile']&gt;,</span> <span class="pre">&lt;URLPattern</span> <span class="pre">''</span> <span class="pre">[name='api-root']&gt;,</span> <span class="pre">&lt;URLPattern</span> <span class="pre">'&lt;drf_format_suffix:format&gt;'</span> <span class="pre">[name='api-root']&gt;,</span> <span class="pre">&lt;URLPattern</span> <span class="pre">'employee_count/'</span> <span class="pre">[name='employee_count']&gt;,</span> <span class="pre">&lt;URLPattern</span> <span class="pre">'employee/&lt;int:employee_id&gt;/'</span> <span class="pre">[name='get_employee_by_id']&gt;]</span></em><a class="headerlink" href="#apps.urls.urlpatterns" title="Link to this definition"></a></dt>
+<dd><p><strong>Список URL-паттернов для API.</strong></p>
+<p>Определяет набор URL-адресов для взаимодействия с API, используя <cite>DefaultRouter</cite> для автоматической генерации стандартных маршрутов для представлений (ViewSet).</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>`router.register(r’systemcommands“, SystemCommands, basename=“systemcommands“)`:</strong></dt><dd><ul>
+<li><p>Регистрирует ViewSet <cite>SystemCommands</cite> для обработки запросов, связанных с системными командами.</p></li>
+<li><p>Создает URL-паттерны для стандартных HTTP-методов (GET, POST, PUT, DELETE) для объектов <cite>SystemCommands</cite>.</p></li>
+<li><p>Базовое имя <cite>systemcommands</cite> используется для формирования имен URL.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`path(„employee_count/“, get_employee_count, name=“employee_count“)`:</strong></dt><dd><ul>
+<li><p>Определяет URL-паттерн для получения общего количества сотрудников.</p></li>
+<li><p>Функция <cite>get_employee_count</cite> будет вызвана при запросе по этому адресу.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>`path(„employee/&lt;int:employee_id&gt;/“, get_employee_by_id, name=“get_employee_by_id“)`:</strong></dt><dd><ul>
+<li><p>Определяет URL-паттерн для получения информации о конкретном сотруднике по его идентификатору.</p></li>
+<li><p>Функция <cite>get_employee_by_id</cite> будет вызвана при запросе по этому адресу с указанным идентификатором в URL.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Пример использования:</strong></p>
+<ul class="simple">
+<li><p><strong>Получение списка всех системных команд:</strong> <cite>GET /systemcommands/</cite></p></li>
+<li><p><strong>Получение информации о конкретной системной команде:</strong> <cite>GET /systemcommands/&lt;id&gt;/</cite></p></li>
+<li><p><strong>Получение общего количества сотрудников:</strong> <cite>GET /employee_count/</cite></p></li>
+<li><p><strong>Получение информации о сотруднике с ID 1:</strong> <cite>GET /employee/1/</cite></p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="module-apps.views">
+<span id="apps-views"></span><h2>Модуль apps.views<a class="headerlink" href="#module-apps.views" title="Ссылка на этот заголовок"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="apps.views.SystemCommands">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">apps.views.</span></span><span class="sig-name descname"><span class="pre">SystemCommands</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/views.html#SystemCommands"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.views.SystemCommands" title="Link to this definition"></a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">ViewSet</span></code></p>
+<p>ViewSet для выполнения системных команд и сохранения результатов.</p>
+<p>Позволяет выполнять различные системные команды через API и сохранять их результаты в базе данных.
+Поддерживаемые команды:
+* <cite>ifconfig</cite> (или <cite>ipconfig</cite> на Windows): Получение информации о сетевых интерфейсах.
+* <cite>touchfile</cite>: Создание нового файла.</p>
+<p><strong>Методы:</strong>
+* <cite>command_ifconfig</cite>: Выполняет команду <cite>ifconfig</cite> или <cite>ipconfig</cite>.
+* <cite>command_touchfile</cite>: Создает новый файл.</p>
+<p><strong>Результаты:</strong>
+* Результаты выполнения команд сохраняются в базе данных в модели <cite>CommandsResult</cite>.
+* При успешном выполнении возвращается HTTP-код 201 (Создано) и сериализованные данные результата.
+* При ошибках возвращается соответствующий HTTP-код и сообщение об ошибке.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.views.SystemCommands.command_ifconfig">
+<span class="sig-name descname"><span class="pre">command_ifconfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/views.html#SystemCommands.command_ifconfig"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.views.SystemCommands.command_ifconfig" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="apps.views.SystemCommands.command_touchfile">
+<span class="sig-name descname"><span class="pre">command_touchfile</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/views.html#SystemCommands.command_touchfile"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.views.SystemCommands.command_touchfile" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="apps.views.SystemCommands.serializer_class">
+<span class="sig-name descname"><span class="pre">serializer_class</span></span><a class="headerlink" href="#apps.views.SystemCommands.serializer_class" title="Link to this definition"></a></dt>
+<dd><p>псевдоним для <a class="reference internal" href="#apps.serializers.CommandsResultSerializer" title="apps.serializers.CommandsResultSerializer"><code class="xref py py-class docutils literal notranslate"><span class="pre">CommandsResultSerializer</span></code></a></p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.views.execute_command">
+<span class="sig-prename descclassname"><span class="pre">apps.views.</span></span><span class="sig-name descname"><span class="pre">execute_command</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">command</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/views.html#execute_command"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.views.execute_command" title="Link to this definition"></a></dt>
+<dd><p>Выполняет системную команду в терминале и возвращает ее вывод.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>command (str): Команда для выполнения.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Вывод команды в стандартный поток вывода или сообщение об ошибке.</p>
+</dd>
+<dt>Raises:</dt><dd><p>subprocess.CalledProcessError: Если при выполнении команды возникла ошибка.</p>
+</dd>
+</dl>
+<p><strong>Примечания:</strong>
+* Использует <cite>subprocess.run</cite> для надежного и безопасного выполнения команд.
+* Автоматически определяет кодировку вывода в зависимости от операционной системы.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.views.get_employee_by_id">
+<span class="sig-prename descclassname"><span class="pre">apps.views.</span></span><span class="sig-name descname"><span class="pre">get_employee_by_id</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/views.html#get_employee_by_id"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.views.get_employee_by_id" title="Link to this definition"></a></dt>
+<dd><p>Получает информацию о конкретном сотруднике по его идентификатору.</p>
+<p><strong>Требуется авторизация.</strong></p>
+<p><strong>Параметры:</strong>
+* <cite>employee_id</cite> (int): Уникальный идентификатор сотрудника.</p>
+<p><strong>Ответ:</strong>
+* Сериализованные данные сотрудника, содержащие его поля (например, <cite>id</cite>, <cite>first_name</cite>, <cite>email</cite>).</p>
+<p><strong>Ошибки:</strong>
+* <cite>404 Not Found</cite>: Если сотрудник с указанным идентификатором не найден.</p>
+<p><strong>Пример ответа (успешный):</strong>
+<code class="docutils literal notranslate"><span class="pre">`json</span>
+<span class="pre">{</span>
+<span class="pre">&quot;id&quot;:</span> <span class="pre">1,</span>
+<span class="pre">&quot;first_name&quot;:</span> <span class="pre">&quot;Иван&quot;,</span>
+<span class="pre">&quot;email&quot;:</span> <span class="pre">&quot;[удаленный</span> <span class="pre">электронный</span> <span class="pre">адрес]&quot;</span>
+<span class="pre">}</span>
+<span class="pre">`</span></code>
+<strong>Пример ответа (ошибка):</strong>
+<code class="docutils literal notranslate"><span class="pre">`json</span>
+<span class="pre">{</span>
+<span class="pre">&quot;error&quot;:</span> <span class="pre">&quot;Employee</span> <span class="pre">not</span> <span class="pre">found&quot;</span>
+<span class="pre">}</span>
+<span class="pre">`</span></code></p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="apps.views.get_employee_count">
+<span class="sig-prename descclassname"><span class="pre">apps.views.</span></span><span class="sig-name descname"><span class="pre">get_employee_count</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">request</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/apps/views.html#get_employee_count"><span class="viewcode-link"><span class="pre">[исходный</span> <span class="pre">код]</span></span></a><a class="headerlink" href="#apps.views.get_employee_count" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+<section id="apps-websocket-client">
+<h2>Модуль apps.websocket_client<a class="headerlink" href="#apps-websocket-client" title="Ссылка на этот заголовок"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;title&gt;WebSocket Client&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script&gt;
+        // Укажите корректный URL для вашего WebSocket сервера
+        const socket = new WebSocket(&#39;ws://127.0.0.1:8000/ws/employees/&#39;);
+
+        socket.onmessage = function(e) {
+            try {
+                const data = JSON.parse(e.data);
+                console.log(&#39;Полученные данные:&#39;, data);
+            } catch (error) {
+                console.error(&#39;Ошибка парсинга JSON:&#39;, error);
+            }
+        };
+
+        socket.onopen = function() {
+            console.log(&#39;WebSocket соединение установлено&#39;);
+        };
+
+        socket.onclose = function(event) {
+            if (event.wasClean) {
+                console.log(`WebSocket соединение закрыто корректно, код=${event.code}, причина=${event.reason}`);
+            } else {
+                console.error(&#39;WebSocket соединение закрыто неожиданно&#39;);
+            }
+        };
+
+        socket.onerror = function(error) {
+            console.error(&#39;Ошибка WebSocket:&#39;, error.message);
+        };
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="modules.html" class="btn btn-neutral float-left" title="Приложение apps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="apps.migrations.html" class="btn btn-neutral float-right" title="Миграции приложения apps apps.migrations" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2024, Михалкин Дмитрий. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
